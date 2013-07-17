@@ -1,0 +1,44 @@
+#container {
+    margin: 40px;
+    font-size: 14px;
+    font-family: Helvetica;
+}
+
+#container input {
+    padding: 4px;
+    width: 500px;
+    font-size: 20px;
+}
+
+#container ul {
+    padding: 0;
+    margin: 0;
+}
+
+#container ul li {
+    width: 512px;
+    list-style: none;
+    margin-bottom: 4px;
+}
+
+#todos {
+    margin: 20px 0;
+}
+
+.todo {
+    position: relative;
+}
+.todo h3 {
+    background-color: #EEEEEE;
+    padding: 10px;
+    margin: 0;
+}
+
+.todo span {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
