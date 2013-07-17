@@ -19,6 +19,11 @@ Model.prototype.getData = function() {
     return this.data;
 }
 
+Model.prototype.add = function(element) {
+    this.data.push(element);
+    this.onChange(this.data);
+}
+
 Model.prototype.remove = function(element) {
     this.data = $.grep(this.data, function(item) {
         return element != item;
