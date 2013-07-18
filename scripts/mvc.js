@@ -53,3 +53,4 @@ View.prototype.notify = function(data) {
 View.prototype.refresh = function() {
     this.render();
 }
+
