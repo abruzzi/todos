@@ -5,20 +5,24 @@
     <title>Index</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="scripts/lib/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
-    <script src="scripts/lib/underscore-1.5.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="scripts/naive.js" type="text/javascript" charset="utf-8"></script>
+    <script src="scripts/todoify.js" type="text/javascript" charset="utf-8"></script>
     <script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
     <div id="container">
-        <div>
-            <input type="text" name="item" id="item" value="" placeholder="add a item here..."/>
-        </div>
-        <div id="todos">
-            <ul>
-                
-            </ul>
-        </div>        
+        <input type="text" id="item-input" placeholder="add a item here..."/>
+        <div id="item-todos" />
     </div>
+
+    <div id="simplified">
+        <input type="text" id="note-input" />
+        <div id="note-todos"/>
+    </div>
+
+    <div id="customzied">
+        <input type="text" id="thing-input" />
+        <div id="thing-todos"/>
+    </div>
+
 </body>
 </html>

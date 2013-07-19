@@ -5,58 +5,32 @@ $(document).ready(function() {
         "My Old friend"
     ];
 
-    var todosModel = new Naive.Model({
-        data: todos
+    $("#item-input").todoify({
+        data: todos,
+        container: "#item-todos"
     });
- 
-    function createTodo(item) {
-        var todo = new Naive.View({
-            container: $("<li>"), 
-            model: new Naive.Model(item)
-        });
-        todo.render = function() {
-            var cont = $("<div>").addClass("todo");
 
-            var content = $("<h3>").text(item);
-            var closeButton = $("<span>").text("X");
+    $("#note-input").todoify({
+        container: "#note-todos"
+    });
 
-            cont.append(content);
-            cont.append(closeButton);
+    $("#thing-input").todoify({
+        container: "#thing-todos",
+        itemClass: "todoItem",
+        renderItem: function(item) {
+            var cont = $("<section>").addClass(this.itemClass);
+            var hdr = $("<header>").text(item);
+            var closeBtn = $("<a>").text("remove");
 
-            todo.options.container.append(cont);
-            return todo.options.container;
+            cont.append(hdr);
+            cont.append(closeBtn);
+
+            closeBtn.click(function(event){
+                cont.remove();
+            });
+
+            return cont;
         }
-        var cont = todo.render();
-        cont.find("span").click(function(event){
-            todosModel.remove(item);
-        });
-        return cont;
-    }
-
-    var todosView = new Naive.View({
-        container: $("#todos ul"), 
-        model: todosModel
     });
-
-    todosView.render = function() {
-        todosView.options.container.html("");
-        todosView.options.model.data().forEach(function(item){
-            var cont = createTodo(item);
-            todosView.options.container.append(cont);
-        });
-    }
-
-    todosView.render();
-
-    $('#item').keypress(function(event) {
-        if(event.keyCode == 13) {
-            todosModel.add($(this).val());
-            todosView.render();
-            $(this).val("").focus();
-            return false;
-        }
-        return true;
-    });
-
 });
 

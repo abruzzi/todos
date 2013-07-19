@@ -10,20 +10,26 @@ describe("test mvc", function() {
 
     describe("model", function() {
         it("get data from model", function() {
-            var model = new Model(data);
-            expect(model.getData().length).toBe(3);
+            var model = new Naive.Model({
+                data: data
+            });
+            expect(model.data().length).toBe(3);
         });
 
         it("add item from model", function() {
-            var model = new Model(data);
+            var model = new Naive.Model({
+                data: data
+            });
             model.add("Dell");
-            expect(model.getData().length).toBe(4);
+            expect(model.data().length).toBe(4);
         });
 
         it("remove item from model", function() {
-            var model = new Model(data);
+            var model = new Naive.Model({
+                data: data
+            });
             model.remove("Apple");
-            expect(model.getData().length).toBe(2);
+            expect(model.data().length).toBe(2);
         });
     });
 
