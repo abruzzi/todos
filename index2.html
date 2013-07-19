@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>    
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="scripts/lib/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="scripts/lib/underscore-1.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+        var Model = function(options) {
+            this.options = options;
+            this.options.views = options.views || [];
+        }
+
+        Model.prototype.add = function(item){
+            this.options.data.push(item);
+            this.update();
+        }
+
+        Model.prototype.remove = function(item){
+            this.options.data = _(this.options.data).reject(function(e) {
+                return e === item;
+            }); 
+            this.update();
+        }
+
+        Model.prototype.attach = function(view) {
+            this.options.views.push(view);
+        }
+
+        Model.prototype.detach = function(view) {
+            this.options.views = _(this.options.views).reject(function(item) {
+                return item.id === view.id;
+            }); 
+        }
+
+        Model.prototype.update = function() {
+            _.each(this.options.views, function(item){
+                item.notify(this);       
+            }, this)
+        } 
+
+        Model.prototype.data = function() {
+            return this.options.data;
+        }
+
+        var View = function(options) {
+            this.options = options;
+            this.id = Math.uuid();
+        }
+
+        View.prototype.notify = function(model) {
+            this.options.model =  model;
+            this.render();
+        }
+
+        View.prototype.render = function() {
+            console.log(this.id + ":" + this.options.model.data());
+        }
+
+        var m = new Model({
+            data: [1, 2, 3, 4] 
+        });
+
+        var v = new View({
+            model: m         
+        });
+
+        var v2 = new View({
+            model: m        
+        });
+
+        m.attach(v);
+        m.attach(v2);
+
+        // v.render();
+
+        m.add(5);
+        m.add(8);
+        m.remove(3);
+
+        m.detach(v);
+        m.add(9);
+    </script>
+</head>
+<body>
+    <div id="container">
+    </div>
+</body>
+</html>
