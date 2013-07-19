@@ -1,26 +1,3 @@
-{
-    function createTodo(item) {
-        var todo = new View($("<li>"), new Model(item));
-        todo.render = function() {
-            var cont = $("<div>").addClass("todo");
-
-            var content = $("<h3>").text(item);
-            var closeButton = $("<span>").text("X");
-
-            cont.append(content);
-            cont.append(closeButton);
-
-            todo.container.append(cont);
-            return todo.container;
-        }
-        var cont = todo.render();
-        cont.find("span").click(function(event){
-            todosModel.remove(item);
-        });
-        return cont;
-    }
-}
-
 $(document).ready(function() {
     var todos = [
         "Hello",
