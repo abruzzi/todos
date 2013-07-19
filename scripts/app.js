@@ -1,8 +1,8 @@
 $(document).ready(function() {
     var todos = [
-        "Hello",
-        "Darkness",
-        "My Old friend"
+        "和西安Office的同事们分享jQuery和Jasmine",
+        "找客户那边的BA确认RCA-1101的需求",
+        "让高亮还钱"
     ];
 
     $("#item-input").todoify({
@@ -14,18 +14,14 @@ $(document).ready(function() {
         container: "#note-todos"
     });
 
+     
     $("#thing-input").todoify({
         container: "#thing-todos",
-        itemClass: "todoItem",
+        template: "<section class='todoItem'><header><%= todo %></header><a>remove</a></section>",
         renderItem: function(item) {
-            var cont = $("<section>").addClass(this.itemClass);
-            var hdr = $("<header>").text(item);
-            var closeBtn = $("<a>").text("remove");
+            var cont = this.renderTemplate(item);
 
-            cont.append(hdr);
-            cont.append(closeBtn);
-
-            closeBtn.click(function(event){
+            cont.find("a").click(function(event){
                 cont.remove();
             });
 

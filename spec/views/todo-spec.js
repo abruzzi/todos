@@ -47,7 +47,8 @@ describe("todo view", function(){
         });
 
         it("should be able to remove item", function() {
-
+            $("#todos span:first").click();
+            expect($("#todos").find(".todo").length).toBe(2);
         });
 
     });
