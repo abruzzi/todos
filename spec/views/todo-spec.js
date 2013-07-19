@@ -12,30 +12,44 @@ describe("todo view", function(){
         loadFixtures('templ.html');
     });
 
-    it("should render an empty list", function() {
-        $("input").todoify({
-            container: "#todos"
+    describe("with empty list", function() {
+
+        beforeEach(function() {
+            $("input").todoify({
+                container: "#todos"
+            });
         });
-        expect($("#todos").find(".todo").length).toBe(0);
+
+        it("should render an empty list", function() {
+            expect($("#todos").find(".todo").length).toBe(0);
+        });
+
+        it("should be able to add new item to list", function() {
+            $("input").val("new item added.").pressEnter();
+
+            expect($("#todos").find(".todo").length).toBe(1);
+            expect($("#todos").find(".todo").first()).toContainText("new item added.");
+        });
+
     });
 
-    it("should render pre-defined data to list", function() {
-        $("input").todoify({
-            data: [1, 2, 3],
-            container: "#todos"
-        });
-        expect($("#todos").find(".todo").length).toBe(3);
-    });
+    describe("with pre-defined data", function() {
 
-    it("should be able to add new item to list", function() {
-        $("input").todoify({
-            container: "#todos"
+        beforeEach(function() {
+            $("input").todoify({
+                data: [1, 2, 3],
+                container: "#todos"
+            });
         });
-        expect($("#todos").find(".todo").length).toBe(0);
 
-        $("input").val("new item added.").pressEnter();
-        expect($("#todos").find(".todo").length).toBe(1);
-        expect($("#todos").find(".todo").first()).toContainText("new item added.");
+        it("should render pre-defined data to list", function() {
+            expect($("#todos").find(".todo").length).toBe(3);
+        });
+
+        it("should be able to remove item", function() {
+
+        });
+
     });
 
 });
