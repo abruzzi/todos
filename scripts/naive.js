@@ -43,6 +43,9 @@
     var View = Naive.View = function(options) {
         var defaults = {};
         this.options = _.extend(defaults, options); 
+        if(this.options.model) {
+            this.options.model.attach(this);
+        }
         this.id = _.uniqueId('naive_v_');
         if(this.initialize) {
             this.initialize.apply(this, arguments);

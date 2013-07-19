@@ -5,10 +5,15 @@ $(document).ready(function() {
         "My Old friend"
     ];
 
-    var todosModel = new Model(todos);
+    var todosModel = new Naive.Model({
+        data: todos
+    });
  
     function createTodo(item) {
-        var todo = new View($("<li>"), new Model(item));
+        var todo = new Naive.View({
+            container: $("<li>"), 
+            model: new Naive.Model(item)
+        });
         todo.render = function() {
             var cont = $("<div>").addClass("todo");
 
@@ -18,8 +23,8 @@ $(document).ready(function() {
             cont.append(content);
             cont.append(closeButton);
 
-            todo.container.append(cont);
-            return todo.container;
+            todo.options.container.append(cont);
+            return todo.options.container;
         }
         var cont = todo.render();
         cont.find("span").click(function(event){
@@ -28,12 +33,16 @@ $(document).ready(function() {
         return cont;
     }
 
-    var todosView = new View($("#todos ul"), todosModel);
+    var todosView = new Naive.View({
+        container: $("#todos ul"), 
+        model: todosModel
+    });
+
     todosView.render = function() {
-        todosView.container.html("");
-        todosView.model.getData().forEach(function(item){
+        todosView.options.container.html("");
+        todosView.options.model.data().forEach(function(item){
             var cont = createTodo(item);
-            todosView.container.append(cont);
+            todosView.options.container.append(cont);
         });
     }
 
