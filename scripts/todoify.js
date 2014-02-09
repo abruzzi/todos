@@ -21,9 +21,10 @@
             $(settings.container).append(cont);
         }
 
+        //render the predefined data here
         settings.data.forEach(function(item){
             render(item);
-        })
+        });
 
         $(this).keypress(function(event){
             if(event.keyCode == 13) {
