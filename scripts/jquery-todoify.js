@@ -1,4 +1,4 @@
-(function($){
+define(['jquery', 'underscore'], function($, _) {
     $.fn.todoify = function(options) {
         var settings = $.extend({
             data: [],
@@ -19,7 +19,7 @@
         var render = function(item) {
             var cont = settings.renderItem(item);
             $(settings.container).append(cont);
-        }
+        };
 
         //render the predefined data here
         settings.data.forEach(function(item){
@@ -35,6 +35,6 @@
         });
 
         return this;
-    }
-}(jQuery));
+    };
+});
 

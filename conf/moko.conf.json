@@ -1,0 +1,72 @@
+[{
+    "request": {
+        "method": "get",
+        "uri": "/todos"
+    },
+    "response": {
+        "status": 200,
+        "headers" : {
+          	"content-type" : "application/json"
+        },        
+        "file": "resources/todos.json"
+    }
+},
+{
+    "request": {
+        "method": "get",
+        "uri": {
+        	"match": "/todos/\\d+"
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers" : {
+          	"content-type" : "application/json"
+        },        
+        "file": "resources/todos.json"
+    }
+},
+{
+    "request": {
+        "method": "post",
+        "uri": "/todos"
+    },
+    "response": {
+        "status": 201,
+        "headers" : {
+          	"content-type" : "application/json"
+        },        
+        "file": "resources/todos.json"
+    }
+},
+{
+    "request": {
+        "method": "put",
+        "uri": {
+            "match": "/todos/\\d+"
+        }
+	},
+	"response": {
+        "status": 200,
+        "headers" : {
+          	"content-type" : "application/json"
+        },        
+        "file": "resources/todos.json"
+    }	
+},
+{
+    "request": {
+        "method": "delete",
+        "uri": {
+            "match": "/todos/\\d+"
+        }
+	},
+	"response": {
+        "status": 200,
+        "headers" : {
+          	"content-type" : "application/json"
+        },
+        "file": "resources/todos.json"
+    }
+}
+]
