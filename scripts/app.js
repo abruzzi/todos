@@ -1,12 +1,7 @@
 $(document).ready(function() {
-    var todos = [
-        "和西安Office的同事们分享jQuery和Jasmine",
-        "找客户那边的BA确认RCA-1101的需求",
-        "让高亮还钱"
-    ];
-
     $("#item-input").todoify({
-        data: todos,
+        data: "/todos",
+        dataKey: "description",
         container: "#item-todos"
     });
 
