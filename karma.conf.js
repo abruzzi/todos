@@ -14,10 +14,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'scripts/lib/*.js',
+      'scripts/lib/underscore-1.5.1.min.js',
+      'scripts/lib/jquery-1.10.2.js',
+      'scripts/lib/jasmine-jquery.js',
       'scripts/*.js',
       'spec/**/*spec.js',
-      'spec/fixtures/*.html'
+      {pattern: 'spec/fixtures/*.html', included: false, served: true}
     ],
 
     preprocessors: [{'spec/fixtures/*.html': ''}],
