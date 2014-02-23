@@ -30,8 +30,11 @@ $.fn.todoify = function(options) {
     if(_.isArray(settings.data)) {
         renderAll(settings.data);
     } else {
-        $.get(settings.data).done(function(data) {
-            renderAll(settings.dataKey ? _.pluck(data, settings.dataKey) : data);
+        $.ajax({
+            url: settings.data,
+            success: function(data) {
+                renderAll(settings.dataKey ? _.pluck(data, settings.dataKey) : data);
+            }
         });
     }
 
