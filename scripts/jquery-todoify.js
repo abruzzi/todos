@@ -1,5 +1,6 @@
 $.fn.todoify = function(options) {
     var settings = $.extend({
+        resource: "",
         data: [],
         dataKey: null,
         template: "<div class='todo'><h3><%= todo %></h3><span>X</span></div>",
@@ -26,14 +27,14 @@ $.fn.todoify = function(options) {
             render(item);
         });
     };
-    
+
     if(_.isArray(settings.data)) {
         renderAll(settings.data);
     } else {
         $.ajax({
-            url: settings.data,
+            url: settings.resource + settings.data,
             success: function(data) {
-                renderAll(settings.dataKey ? _.pluck(data, settings.dataKey) : data);
+                renderAll(settings.dataKey ? _.pluck($.parseJSON(data), settings.dataKey) : data);
             }
         });
     }

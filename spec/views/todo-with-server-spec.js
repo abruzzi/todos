@@ -34,7 +34,7 @@ describe("interact with backend server", function() {
     describe("with data requested from server, but the data need to be plucked", function() { 
         beforeEach(function() {
             spyOn($, 'ajax').andCallFake(function (params) {
-                params.success([{id: 1, description: "foo"}, {id: 1, description: "bar"}]);
+                params.success("[{\"id\": 1, \"description\": \"foo\"}, {\"id\": 1, \"description\": \"bar\"}]");
             });
         });
 

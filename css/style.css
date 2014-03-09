@@ -10,7 +10,7 @@ input {
     font-size: 20px;
 }
 
-#item-todos {
+#item-todos, #remote-todos {
     width: 512px;
     margin: 20px 0;
 }

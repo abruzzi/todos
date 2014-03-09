@@ -5,6 +5,13 @@ $(document).ready(function() {
         container: "#item-todos"
     });
 
+    $("#remote-input").todoify({
+        resource: "http://localhost:2000",
+        data: "/todos/1",
+        dataKey: "description",
+        container: "#remote-todos"
+    });
+
     $("#note-input").todoify({
         container: "#note-todos"
     });
