@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     $("#remote-input").todoify({
-        resource: "http://localhost:2000",
+        resource: "http://localhost:12306",
         data: "/todos/1",
         dataKey: "description",
         container: "#remote-todos"

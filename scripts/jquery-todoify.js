@@ -34,7 +34,7 @@ $.fn.todoify = function(options) {
         $.ajax({
             url: settings.resource + settings.data,
             success: function(data) {
-                renderAll(settings.dataKey ? _.pluck($.parseJSON(data), settings.dataKey) : data);
+                renderAll(settings.dataKey ? _.pluck(data, settings.dataKey) : data);
             }
         });
     }
