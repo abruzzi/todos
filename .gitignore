@@ -1,3 +1,5 @@
 *.swp
 resources/
 TODO
+.idea/
+server/node_modules/

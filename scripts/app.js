@@ -6,8 +6,8 @@ $(document).ready(function() {
     });
 
     $("#remote-input").todoify({
-        resource: "http://localhost:12306",
-        data: "/todos/1",
+        resource: "http://localhost:9999",
+        data: "/1",
         dataKey: "description",
         container: "#remote-todos"
     });
